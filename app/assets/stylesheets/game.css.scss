@@ -1,0 +1,127 @@
+body {
+
+}
+
+.content{
+  width:1024px;
+  margin: 0px auto 40px auto;
+}
+
+.outer{
+  width:1044px;
+  margin-bottom:20px;
+}
+
+#inner{
+  margin: 0px auto 20px auto;
+  text-align: center;
+  width:1024px;
+  border:10px solid black;
+  -moz-box-shadow: 3px 5px 5px #1a1a1a;
+  -webkit-box-shadow: 3px 5px 5px #1a1a1a;
+  box-shadow: 3px 5px 5px #1a1a1a;
+}
+
+canvas#canvasBG {
+  background: #fff;
+  margin: 0px auto 0px auto;
+  display: block;
+
+}
+
+canvas#canvasBird, #canvasLetters, #canvasTest, #canvasWords, #canvasWordBoard, #canvasCurrentWord, #canvasMenu, #canvasControls{
+  background-color: transparent;
+  margin: -600px auto 0px auto;
+  display: block;
+}
+
+#canvasLoading {
+  background-color: white;
+  margin: -600px auto 0px auto;
+  display: block;
+  z-index: 100;
+  height:600px;
+  width:1024px;
+}
+
+#points{
+  position: absolute;
+  margin: 20px 100px 0px 420px;
+  font-family: Arial Black, Helvetica, sans-serif;
+  font-style: bold;
+  font-size: 15px;
+  width: 200px;
+  /*background: white;
+  border: 3px solid black;*/
+  text-align: center;
+  border-radius: 20px;
+  padding: 2px;
+  opacity: .9;
+  color: green;
+}
+
+#levelUp {
+  position: absolute;
+  margin: 220px 100px 0px 380px;
+  font-family: Arial Black, Helvetica, sans-serif;
+  font-style: bold;
+  font-size: 30px;
+  width: 270px;
+/*  background: white;
+  border: 4px solid black;*/
+  text-align: center;
+  border-radius: 15px;
+  padding: 3px;
+  
+  opacity: .9;
+  padding: 30px 0px 30px 0px;
+  line-height:30px;
+}
+
+#showStrikes {
+  position: absolute;
+  font-family: Arial Black, Helvetica, sans-serif;
+  margin: 250px 100px 0px 400px;
+  color:red;
+  font-size:160px;
+}
+
+#endGameDialog {
+  display: none;
+}
+
+
+/*
+GAME OVER DIALOG
+*/
+
+#gameOverForm{
+  display: inline;
+  label {
+    margin-right: 15px;
+  }
+  input[type="text"]{
+    width:200px;
+  }
+}
+
+/*
+Login controls
+*/
+
+#game_login_nav {
+  float:right;
+  height:20px;
+  a{
+    color:white;
+    text-decoration:none;
+  }
+}
+
+
+.clear{
+  clear: both;
+}
+
+
+

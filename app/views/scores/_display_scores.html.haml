@@ -1,0 +1,15 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Score
+      %th Level
+      %th Date
+  %tbody
+    - @scores.each do |score|
+      %tr
+        %td= link_to score.name, score.user
+        %td= score.score
+        %td= score.level
+        %td= score.date
+= will_paginate @scores, :renderer => BootstrapPagination::Rails

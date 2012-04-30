@@ -1,0 +1,34 @@
+= form_for @user, :url => admin_users_url, :html => { :class => 'form-horizontal' } do |f|
+  - if @user.errors.any?
+    .alert.alert-error
+      %h2
+        = pluralize(@user.errors.count, "error")
+        on this form:
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  .control-group
+    = f.label :username, :class => 'control-label'
+    .controls
+      = f.text_field :username, :class => 'text_field'
+  .control-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, :class => 'text_field'
+  .control-group
+    = f.label :password, :class => 'control-label'
+    .controls
+      = f.password_field :password, :class => 'text_field'
+
+  .control-group
+    = f.label :password_confirmation, :class => 'control-label'
+    .controls
+      = f.password_field :password_confirmation, :class => 'text_field'
+  .control-group
+    = f.label :role, :class => 'control-label'
+    .controls
+      = select(:user, :role_id, Role.all.collect {|r| [r.name, r.id]}, {:prompt => 'Select Role'})
+
+  .form-actions
+    = f.submit 'Create User', :class => 'btn btn-primary'
+    = link_to 'Cancel', admin_users_url, :class => 'btn'

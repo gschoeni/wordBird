@@ -1,0 +1,17 @@
+= form_for(@role, :url => admin_roles_path, :html => {:class => 'form-horizontal'}) do |f|
+  - if @role.errors.any?
+    .alert.alert-error
+      %h2
+        = pluralize(@role.errors.count, "error")
+        prohibited this author from being saved:
+      %ul
+        - @role.errors.full_messages.each do |msg|
+          %li= msg
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+
+  .form-actions
+    = f.submit 'Create Role', :class => 'btn btn-primary'
+    = link_to 'Cancel', admin_roles_url, :class => 'btn'

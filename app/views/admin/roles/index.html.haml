@@ -1,0 +1,21 @@
+%h3 Roles
+%table.table.table-striped
+	%thead
+		%tr
+			%th Name
+			%th Number of Users
+			%th Description
+	%tfoot
+		%tr
+			%td
+				= pluralize(@roles.count, 'role')
+			%td
+			%td
+		%tbody
+		- @roles.each do |role|
+			%tr{:class => cycle('list_line_odd', 'list_line_even')}
+				%td= link_to role.name, edit_admin_role_path(role)
+				%td= role.users.count
+				%td= role.description
+%p
+	= link_to "Add Role", new_admin_role_path

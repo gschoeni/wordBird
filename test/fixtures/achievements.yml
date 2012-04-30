@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  num_to_complete: 1
+  achievement_category_id: 1
+
+two:
+  name: MyString
+  num_to_complete: 1
+  achievement_category_id: 1

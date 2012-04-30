@@ -1,0 +1,18 @@
+%h1 Listing Achievement Categories
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Description
+    %th
+
+  - @achievement_categories.each do |achievement_category|
+    %tr
+      %td= achievement_category.name
+      %td= achievement_category.description
+      %td
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_achievement_category_path(achievement_category), :class => 'btn btn-mini'
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_achievement_category_path(achievement_category), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger'
+
+%br
+= link_to 'New Achievement category', new_admin_achievement_category_path

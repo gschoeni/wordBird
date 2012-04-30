@@ -1,0 +1,21 @@
+= form_for @user_session, :html => {:class => 'form-horizontal'} do |f|
+  - if @user_session.errors.any?
+    .alert.alert-error
+      Incorrect Username/Password
+  %fieldset
+    %legend
+      Login
+    %br/
+
+    .control-group
+      = f.label :username, :class => 'control-label'
+      .controls
+        = f.text_field :username, :class => 'text_field'
+    .control-group
+      = f.label :password, :class => 'control-label'
+      .controls
+        = f.password_field :password, :class => 'text_field'
+    .form-actions
+      = f.submit 'Login', :class => 'btn btn-primary'
+      = link_to "Register", new_user_path, :class => 'btn'
+      

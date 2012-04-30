@@ -1,0 +1,45 @@
+#inner
+  #points
+    /100 POINTS
+  #levelUp
+    /Level Up
+  #showStrikes
+    /XX
+  
+  %canvas#canvasBG{:height => "600", :width => "1024"}
+  %canvas#canvasBird{:height => "600", :width => "1024"}
+  %canvas#canvasLetters{:height => "600", :width => "1024"}
+  %canvas#canvasWordBoard{:height => "600", :width => "1024"}
+  %canvas#canvasWords{:height => "600", :width => "1024"}
+  %canvas#canvasCurrentWord{:height => "600", :width => "1024"}
+  %canvas#canvasControls{:height => "600", :width => "1024"}
+  / for the home screen menu
+  %canvas#canvasMenu{:height => "600", :width => "1024"}
+  #canvasLoading
+  / Test will be used for testing purposes
+  %canvas#canvasTest{:height => "600", :width => "1024"}
+    
+  -if current_user
+    %input#user_id{:name => 'user_id', :type => 'hidden', :value => current_user.id}
+    %input#user_points{:name => 'user_points', :type => 'hidden', :value => current_user.points}
+    %input#user_eggs{:name => 'user_eggs', :type => 'hidden', :value => current_user.eggs}
+    %input#user_hearts{:name => 'user_hearts', :type => 'hidden', :value => current_user.hearts}
+    %input#user_words_solved{:name => 'user_words_solved', :type => 'hidden', :value => current_user.words_solved}
+  #endGameDialog{:title => "Game Over"}
+    %p
+      You earned
+      %span#endGamePoints 0
+      points!
+    - if current_user
+      %form#gameOverForm
+        <label for"name">Name:
+        %input#score_name{:name => "name", :value => current_user, :type => "text"}
+        %input#submitNickname{:type => "submit", :class => 'btn btn-primary'}
+    -else
+      %form#gameOverForm
+        <label for"name">Name:
+        %input#score_name{:name => "name", :placeholder => "Nickname", :type => "text"}
+        %input#submitNickname{:type => "submit", :class => 'btn btn-primary'}
+        = link_to 'Register', new_user_path, :class => 'btn'
+
+

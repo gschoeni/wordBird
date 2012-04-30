@@ -1,0 +1,113 @@
+- model_class = @user.class
+.row
+  .span5
+
+    %h1=@user.username
+    %hr
+    /#prof_pic
+    /%a.thumbnail{:href => edit_user_path(current_user)}
+    /= image_tag @user.photo.url(:medium)
+    /#user_info
+    %p
+      %strong Level:
+      = @user.calc_level
+    %p
+      %strong Points all time: 
+      = @user.points
+    %p
+      %strong Dozens of Eggs: 
+      = @user.dozens_of_eggs
+    %p
+      %strong Words Solved:
+      = @user.words_solved
+    
+  .span5
+    %h1 Stats
+    %hr
+    %p
+      Points Until Level
+      = (@user.calc_level + 1).to_s + ":"
+      = @user.current_level_points
+      ="/ 10000"
+      .progress.progress-striped
+        /<%= @user.level_points_percent%>
+        .bar{:style => "width: #{@user.level_points_percent}%;"}
+    %p
+      Eggs Until Next Dozen:
+      = @user.eggs_in_dozen
+      ="/ 12"
+      .progress.progress-warning.progress-striped
+        .bar{:style => "width: #{@user.eggs_in_dozen_percent}%;"}
+
+.row
+  .span10
+    %h1 Achievements
+    %hr
+    %table.table
+      %tbody
+      - AchievementCategory.all.each do |achievement_category|
+        -if achievement_category != AchievementCategory.all.first
+          %tr
+            %td
+            %td
+            %td
+        %tr{:style => 'background-color:#eee; border-bottom:#999'}
+          %td
+            %strong=achievement_category
+          %td
+          %td
+        - achievement_category.achievements.each do |achievement|
+          - if @user.achievement_completed?(achievement)
+            %tr{:style => 'background-color:#bce595'}
+              %td= achievement.name
+              %td= @user.achievement_progress(achievement)
+              %td= @user.achievement_completed(achievement).html_safe
+          -else
+            %tr
+              %td= achievement.name
+              %td= @user.achievement_progress(achievement)
+              %td= @user.achievement_completed(achievement).html_safe
+  / .span5
+  /   %h1 Accessories
+  /   %hr
+  /   %p
+  /     %h3 Hats:
+  /     %ul.thumbnails
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_cowboy.png')
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_pink_beanie.png')
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_blue_cap.png')
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_top_hat.png')
+  /   %p
+  /     %h3 Goggles:
+  /     %ul.thumbnails
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_green_goggles.png')
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_blue_goggles.png')
+  /   %p
+  /     %h3 Shoes:
+  /     %ul.thumbnails
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_yellow_nikes.png')
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_blue_nikes.png')
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_sparries.png')
+  /       %li.span2
+  /         %a.thumbnail{:href => '#'}
+  /           = image_tag('burdie_orange_converse.png')
+    
+          

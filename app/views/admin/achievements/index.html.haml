@@ -1,0 +1,26 @@
+%h1 Listing achievements
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Num to complete
+    %th Achievement category
+    %th
+    %th
+    %th
+
+    - AchievementCategory.all.each do |achievement_category|
+      %tr
+        %td
+          %strong=achievement_category
+        %td
+        %td
+      - achievement_category.achievements.each do |achievement|     
+        %tr{:class => cycle('list_line_odd', 'list_line_even')}
+          %td= achievement.name
+          %td= achievement.num_to_complete
+          %td
+
+%br
+
+= link_to 'New Achievement', new_admin_achievement_path

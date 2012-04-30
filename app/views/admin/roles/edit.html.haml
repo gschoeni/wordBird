@@ -1,0 +1,24 @@
+
+= form_for(@role, :url => admin_role_path(@role), :html => { :class => "edit_user form-horizontal"}) do |f|
+  - if @role.errors.any?
+    .alert.alert-error
+      %h2
+        = pluralize(@role.errors.count, "error")
+        prohibited this author from being saved:
+      %ul
+        - @role.errors.full_messages.each do |msg|
+          %li= msg
+  %fieldset
+    %legend
+      Edit Role
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls
+        = f.text_field :name
+    .content-group
+      = f.label :description, :class => 'control-label'
+      .controls
+        = f.text_area :description, :rows => 4
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
